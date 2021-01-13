@@ -1,7 +1,7 @@
 {
-  "name": "dsqs5barchart",
+  "name": "d3barchart",
   "version": "1.0.0",
-  "description": "Template for the Data Visualization with D3 Challenges at freeCodeCamp.com",
+  "description": "Template for the Data Visualization Bar Chart with D3 Challenges at freeCodeCamp.com",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TurtleWolfe/D3qs5BarChart.git"
+    "url": "git+https://github.com/TurtleWolfe/D3BarChart.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TurtleWolfe/D3qs5BarChart/issues"
+    "url": "https://github.com/TurtleWolfe/D3BarChart/issues"
   },
-  "homepage": "https://turtlewolfe.github.io/D3qs5BarChart/",
+  "homepage": "https://turtlewolfe.github.io/D3BarChart/",
   "devDependencies": {
     "gh-pages": "^3.1.0"
   },
