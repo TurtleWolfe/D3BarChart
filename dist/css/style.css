@@ -19,9 +19,9 @@ svg {
 }
 
 rect {
-  /* width: 15px; */
-  stroke: white;
-  stroke-width: 1px;
+  width: 15px;
+  /* stroke: white;
+  stroke-width: 1px; */
 }
 
 #bottom-axis text {
