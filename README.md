@@ -1,11 +1,11 @@
-# [D3qs5BarChart](https://turtlewolfe.github.io/D3qs5BarChart/ 'Template for Data Visualization Bar Chart with D3 Challenges at freeCodeCamp.com')
+# [D3BarChart](https://turtlewolfe.github.io/D3BarChart/ 'Template for Data Visualization Bar Chart with D3 Challenges at freeCodeCamp.com')
 
 ```bash
 # repo
 touch .gitignore
 # node_modules
 git init
-git remote add origin git@github.com:TurtleWolfe/fccD3.git
+git remote add origin git@github.com:TurtleWolfe/D3BarChart.git
 npm init -y
 npm i gh-pages -D
 # npm i gh-pages --save-dev
@@ -27,5 +27,5 @@ npm run deploy
 "scripts": {
     "deploy": "gh-pages -d dist"
   },
-"homepage": "https://turtlewolfe.github.io/fccD3/",
+"homepage": "https://turtlewolfe.github.io/D3BarChart/",
 ```
