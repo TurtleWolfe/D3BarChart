@@ -24,7 +24,7 @@ rect {
   stroke-width: 0.09px;
 }
 
-#bottom-axis text {
+#y-axis text {
   transform: rotate(45deg);
   text-anchor: start; /* add this line */
 }

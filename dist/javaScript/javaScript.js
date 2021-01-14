@@ -21,7 +21,8 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
   d3.select('svg').selectAll('rect') //select rectangles within svg (even if none exist)
     .data(data) //attach data to the rectangles
     .enter() //find the data elements that are not attached to rectangles
-    .append('rect'); //append rectangles for each data not attached to a rectangle
+    .append('rect') //append rectangles for each data not attached to a rectangle
+    .attr('class', 'bar'); //add attribute class='bar' to each rectangle
 
 
   // // section 6 Adjusting the height and the width of the bars
@@ -51,6 +52,43 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
       console.log(datum[1]);
       return HEIGHT - yScale(datum[1]);
     });
+
+
+  // // section 6 Adjusting the height and the width of the bars
+
+  d3.selectAll('rect') //find all rectangles
+    .attr('data-gdp', function (datum, index) { //set the height of each rectangle...
+      let GDP = datum[1];
+      // console.log(datum[1]);
+      // // console.log(GDP);
+      return GDP;
+    });
+
+  // // section 6 Adjusting the height and the width of the bars
+
+  d3.selectAll('rect') //find all rectangles
+    .attr('data-date', function (datum, index) { //set the height of each rectangle...
+      let QUARTER = datum[0];
+      // console.log(datum[1]);
+      // // console.log(QUARTER);
+      return QUARTER;
+    });
+
+  // // section 6 add a tool tip based on the Quarter of GDP's date
+
+  d3.selectAll('rect') //find all rectangles
+    .append("title")
+    .text(function (datum) { //get the height of each rectangle...
+      let QUARTER = datum[0];
+      // console.log(datum[0]);
+      // // console.log(QUARTER);
+      return 'data-date: ' + QUARTER;
+    })
+    .attr('data-date', function (datum, index) { //get the height of each rectangle...
+      let QUARTER = datum[0];
+      return QUARTER;
+    })
+    .attr('id', 'tooltip'); //
 
 
   // // section 7 Adjusting the horizontal and the vertical placement of the bars
@@ -98,7 +136,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 
   var leftAxis = d3.axisLeft(yScale); //create a left axis generator using the yScale
   d3.select('svg') //select the svg
-    .append('g').attr('id', 'left-axis') //append a <g> tag to it with id=left-axis
+    .append('g').attr('id', 'x-axis') //append a <g> tag to it with id=left-axis
     .call(leftAxis); // create a left axis within that <g>
 
 
@@ -117,7 +155,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 
   var bottomAxis = d3.axisBottom(skillScale); //create a bottom axis generator that uses the skillScale
   d3.select('svg') //select the svg
-    .append('g').attr('id', 'bottom-axis') //append a <g> tag to it with id=bottom-axis
+    .append('g').attr('id', 'y-axis') //append a <g> tag to it with id=bottom-axis
     .call(bottomAxis) // create a bottom axis within that <g>
     .attr('transform', 'translate(0,' + HEIGHT + ')'); //move it to the bottom of the svg
 
