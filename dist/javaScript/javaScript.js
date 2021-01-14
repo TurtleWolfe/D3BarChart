@@ -1,5 +1,5 @@
 var WIDTH = 800;
-var HEIGHT = 600;
+var HEIGHT = 400;
 
 // set width and height of svg
 d3.select('svg')
@@ -36,7 +36,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     // console.log(datum[1]);
     return datum[1]; //by looking at the count property of each datum
   });
-  yScale.domain([yMin - 1, yMax]); //set the domain of yScale from yMin and yMax
+  yScale.domain([yMin - 150, yMax + 1000]); //set the domain of yScale from yMin and yMax
 
 
   // // section 6 Adjusting the height and the width of the bars
@@ -76,48 +76,49 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 
   // // section 8 Making the width of the bars dynamic
 
-  // d3.selectAll('rect') //select all rectangles
-  //   .attr('width', WIDTH / data.length); //set the width of all rectangles to be the width of the SVG divided by the number of data elements
+  d3.selectAll('rect') //select all rectangles
+    .attr('width', WIDTH / data.length); //set the width of all rectangles to be the width of the SVG divided by the number of data elements
 
 
   // // section 9 Changing the color of the bar based on data
 
-  // var yDomain = d3.extent(data, function (datum, index) { //set the y domain by getting the min/max with d3.extent
-  //   return datum.count; //... and examining the count property of each datum
-  // });
-  // var colorScale = d3.scaleLinear();//create a linear scale
-  // colorScale.domain(yDomain); //the domain is the yDomain
-  // colorScale.range(['#00cc00', 'blue']); //the visual range goes from green->blue
-  // d3.selectAll('rect') //select all rectangles
-  //   .attr('fill', function (datum, index) { //set the fill of each rectangle
-  //     return colorScale(datum.count); //by converting the count property of the datum to a color
-  //   });
+  var yDomain = d3.extent(data, function (datum, index) { //set the y domain by getting the min/max with d3.extent
+    return datum[1]; //... and examining the [1] property of each datum
+  });
+  var colorScale = d3.scaleLinear();//create a linear scale
+  colorScale.domain(yDomain); //the domain is the yDomain
+  colorScale.range(['#00cc00', 'blue']); //the visual range goes from green->blue
+  d3.selectAll('rect') //select all rectangles
+    .attr('fill', function (datum, index) { //set the fill of each rectangle
+      return colorScale(datum[1]); //by converting the [1] property of the datum to a color
+    });
 
 
   // // section 10 Adding axes
 
-  // var leftAxis = d3.axisLeft(yScale); //create a left axis generator using the yScale
-  // d3.select('svg') //select the svg
-  //   .append('g').attr('id', 'left-axis') //append a <g> tag to it with id=left-axis
-  //   .call(leftAxis); // create a left axis within that <g>
+  var leftAxis = d3.axisLeft(yScale); //create a left axis generator using the yScale
+  d3.select('svg') //select the svg
+    .append('g').attr('id', 'left-axis') //append a <g> tag to it with id=left-axis
+    .call(leftAxis); // create a left axis within that <g>
 
 
   // // section 10 Adding axes
 
-  // var skillScale = d3.scaleBand(); //create a scale band that will map skills to horizontal positions
-  // var skillDomain = data.map(function (skill) { //create an array of skill strings
-  //   return skill.name;
-  // });
-  // skillScale.range([0, WIDTH]); //set the range of the skillScale to 0->800
-  // skillScale.domain(skillDomain); //set the domain to be the array of skill strings
+  var skillScale = d3.scaleBand(); //create a scale band that will map skills to horizontal positions
+  var skillDomain = data.map(function (skill) { //create an array of skill strings
+    console.log(skill[0]);
+    return skill[0];
+  });
+  skillScale.range([0, WIDTH]); //set the range of the skillScale to 0->800
+  skillScale.domain(skillDomain); //set the domain to be the array of skill strings
 
 
   // // section 10 Adding axes
 
-  // var bottomAxis = d3.axisBottom(skillScale); //create a bottom axis generator that uses the skillScale
-  // d3.select('svg') //select the svg
-  //   .append('g').attr('id', 'bottom-axis') //append a <g> tag to it with id=bottom-axis
-  //   .call(bottomAxis) // create a bottom axis within that <g>
-  //   .attr('transform', 'translate(0,' + HEIGHT + ')'); //move it to the bottom of the svg
+  var bottomAxis = d3.axisBottom(skillScale); //create a bottom axis generator that uses the skillScale
+  d3.select('svg') //select the svg
+    .append('g').attr('id', 'bottom-axis') //append a <g> tag to it with id=bottom-axis
+    .call(bottomAxis) // create a bottom axis within that <g>
+    .attr('transform', 'translate(0,' + HEIGHT + ')'); //move it to the bottom of the svg
 
 });
