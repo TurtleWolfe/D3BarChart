@@ -21,7 +21,7 @@ svg {
 rect {
   /* width: 15px; */
   stroke: white;
-  stroke-width: 0.09px;
+  stroke-width: 1px;
 }
 
 #y-axis text {
