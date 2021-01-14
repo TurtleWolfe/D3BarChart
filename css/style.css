@@ -13,15 +13,15 @@ svg {
   /* width: 100%; height: 100%; background: #f00; */
   border: 1px solid black;
   overflow: visible;
-  margin-left: 20px;
+  margin-left: 50px;
   margin-top: 23px;
   margin-bottom: 123px;
 }
 
 rect {
-  width: 15px;
-  /* stroke: white;
-  stroke-width: 1px; */
+  /* width: 15px; */
+  stroke: white;
+  stroke-width: 0.09px;
 }
 
 #bottom-axis text {
