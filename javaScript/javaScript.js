@@ -78,17 +78,17 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 
   d3.selectAll('rect') //find all rectangles
     .append("title")
+    .attr('id', 'tooltip')
+    .attr('data-date', function (datum, index) { //get the height of each rectangle...
+      let QUARTER = datum[0];
+      return QUARTER;
+    })
     .text(function (datum) { //get the height of each rectangle...
       let QUARTER = datum[0];
       // console.log(datum[0]);
       // // console.log(QUARTER);
       return 'data-date: ' + QUARTER;
-    })
-    .attr('data-date', function (datum, index) { //get the height of each rectangle...
-      let QUARTER = datum[0];
-      return QUARTER;
-    })
-    .attr('id', 'tooltip'); //
+    }); //
 
 
   // // section 7 Adjusting the horizontal and the vertical placement of the bars
